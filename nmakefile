@@ -1,0 +1,16 @@
+# Any copyright is dedicated to the Public Domain.
+# http://creativecommons.org/publicdomain/zero/1.0/ 
+
+all: bufferfile.lib
+
+bufferfile.obj: bufferfile_win32.c bufferfile.h
+	cl /Fobufferfile.obj /c bufferfile_win32.c /nologo
+
+bufferfile.lib: bufferfile.obj
+	lib /OUT:bufferfile.lib bufferfile.obj
+
+clean:
+	del bufferfile.lib || echo > nul
+	del bufferfile.obj || echo > nul
+	del *.pdb || echo > nul
+	del *.ilk || echo > nul
